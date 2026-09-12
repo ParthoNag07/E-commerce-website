@@ -1,43 +1,115 @@
-Marquee — Men's Fashion Storefront
+# 🛍️ E-commerce Website
 
-A front-end e-commerce demo for a menswear brand. Static HTML/CSS/JS — no build step, no backend, no dependencies.
+A modern, responsive e-commerce website built to deliver a clean and engaging online shopping experience. This project focuses on intuitive navigation, product presentation, and a polished frontend interface.
 
-Features
-Product grid with search, category filter, price range, and sorting (newest, price, rating)
-Category quick-filters
-Shopping cart with add/remove/update quantity, persisted in localStorage
-Responsive layout (desktop → tablet → mobile)
-Newsletter signup (front-end only)
-Tech
-Plain HTML, CSS, and vanilla JavaScript
-Google Fonts: Fraunces (headings) and Inter (body)
-Product images from Unsplash
-Project structure
-├── index.html      # markup, styles, and script all included
-├── style.css       # standalone copy of the styles
-└── script.js       # standalone copy of the app logic
+🔗 **Live Demo:** [View Website](https://parthonag07.github.io/E-commerce-website/)
 
-index.html works on its own. style.css and script.js are provided separately if you'd rather link them instead of keeping everything inline — just add these two lines to index.html:
+---
 
-html
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+## ✨ Overview
 
-and remove the inline <style>/<script> blocks.
+The **E-commerce Website** is a frontend project designed to demonstrate the development of a modern online shopping platform. It features a responsive layout, product-focused sections, and a user-friendly interface optimized for different screen sizes.
 
-Running locally
+The project reflects my ability to build visually appealing web interfaces while focusing on usability, responsive design, and clean frontend development.
 
-No build tools needed — just open index.html in a browser, or serve the folder:
+---
 
-bash
-python3 -m http.server 8000
+## 🚀 Features
 
-Then visit http://localhost:8000.
+* 🛒 Modern e-commerce interface
+* 📱 Fully responsive design
+* 🧭 Clean and intuitive navigation
+* 🖼️ Product-focused presentation
+* 🎨 Premium and consistent UI styling
+* ⚡ Fast-loading static website
+* 💻 Optimized for desktop and mobile screens
 
-Product data
+---
 
-Products are hardcoded in script.js (the products array). Swap in your own data or wire it up to an API by replacing that array and the renderProducts() function's data source.
+## 🛠️ Tech Stack
 
-Notes
-Cart state persists per-browser via localStorage (key: marquee_cart_v1) — it does not sync across devices or sessions on a server.
-Checkout is a placeholder (alert()) — no payment integration
+| Technology     | Purpose                       |
+| -------------- | ----------------------------- |
+| **HTML5**      | Website structure             |
+| **CSS3**       | Styling and responsive layout |
+| **JavaScript** | Frontend interactions         |
+
+---
+
+## 📂 Project Structure
+
+```text
+E-commerce-website/
+│
+├── index.html
+├── style.css
+├── script.js
+└── assets/
+```
+
+> *Project structure may vary depending on the implementation.*
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ParthoNag07/E-commerce-website.git
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd E-commerce-website
+```
+
+### 3. Run the project
+
+Open `index.html` in your browser, or use **Live Server** in VS Code.
+
+---
+
+## 🌐 Live Preview
+
+Experience the project here:
+
+👉 [**E-commerce Website — Live Demo**](https://parthonag07.github.io/E-commerce-website/)
+
+---
+
+## 🎯 What I Learned
+
+* Building responsive layouts using HTML and CSS
+* Creating clean and consistent user interfaces
+* Structuring frontend projects effectively
+* Improving website usability across screen sizes
+* Implementing interactive elements with JavaScript
+
+---
+
+## 🔮 Future Improvements
+
+* Add product search and filtering
+* Implement shopping cart functionality
+* Add product detail pages
+* Integrate a backend and database
+* Add user authentication
+* Implement checkout and payment integration
+
+---
+
+## 👨‍💻 Author
+
+**Partho Nag**
+
+B.Tech CSE Student | Frontend Developer | Aspiring Software Development Engineer
+
+* GitHub: [@ParthoNag07](https://github.com/ParthoNag07)
+* LinkedIn: [Partho Nag](https://www.linkedin.com/in/partho-nag-09132532b/)
+
+---
+
+⭐ If you like this project, consider giving it a star!
+
