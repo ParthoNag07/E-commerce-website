@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Marquee — Premium Men's Collection</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1a1812;
+    --paper:#f2ece0;
+    --card:#faf7f0;
+    --brass:#94743f;
+    --brass-deep:#6e5527;
+    --rust:#6a3226;
+    --muted:#8c8474;
+    --line: rgba(26,24,18,0.14);
+    --line-strong: rgba(26,24,18,0.28);
+    --white:#ffffff;
+    --radius:2px;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:450; letter-spacing:-0.01em}
+
+  /* Header / Nav */
+  header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:18px 20px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+  }
+  .logo .symbol{
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;color:var(--ink);
+    font-weight:450;font-family:'Fraunces';font-size:17px;
+  }
+  .logo span{font-weight:450;font-family:'Fraunces';font-size:20px;letter-spacing:0.01em;color:var(--ink)}
+
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:30px;align-items:center}
+  nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:14px;padding:2px 0;position:relative;transition:color .18s}
+  nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1px;background:var(--brass);transition:right .28s ease}
+  nav a:hover{color:var(--brass-deep)}
+  nav a:hover::after{right:0}
+
+  .actions{display:flex;gap:14px;align-items:center}
+  .icon-btn{background:transparent;border:0;padding:8px;cursor:pointer;position:relative;font-size:17px}
+  .cart-count{position:absolute;top:2px;right:2px;background:var(--ink);color:var(--paper);font-weight:600;border-radius:50%;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-size:10px}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    overflow:visible;
+    margin-bottom:56px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero .bg{display:none}
+  .hero::after{display:none}
+  .hero-inner{
+    position:relative;max-width:1200px;padding:64px 20px 0;display:grid;
+    grid-template-columns:1.1fr 0.9fr;align-items:end;gap:32px;
+    color:var(--ink);
+  }
+  .hero-text{
+    grid-column:1;
+    padding-bottom:64px;
+  }
+  .hero-text .kicker{font-size:14px;color:var(--muted);margin:0 0 18px;font-style:italic;font-family:'Fraunces'}
+  .hero h1{
+    font-size:clamp(38px,5vw,64px);line-height:1.04;margin:0 0 22px;color:var(--ink);font-weight:450;max-width:11ch;
+  }
+  .hero p{margin:0 0 28px;font-size:17px;color:#4a4638;max-width:38ch}
+  .hero-cta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .btn{
+    display:inline-block;background:var(--ink);color:var(--paper);padding:14px 26px;border-radius:var(--radius);font-weight:500;font-size:14px;text-decoration:none;cursor:pointer;transition:background .2s;
+  }
+  .btn:hover{background:var(--brass-deep)}
+  .hero-secondary{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;border-bottom:1px solid var(--line-strong);padding-bottom:2px;transition:border-color .2s}
+  .hero-secondary:hover{border-color:var(--ink)}
+
+  .hero-media{
+    grid-column:2;position:relative;
+  }
+  .hero-media img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+  .hero-media .tag{
+    position:absolute;left:-22px;bottom:28px;background:var(--card);border:1px solid var(--line);
+    padding:14px 18px;max-width:190px;font-size:13px;color:var(--ink);
+  }
+  .hero-media .tag strong{display:block;font-family:'Fraunces';font-weight:450;font-size:15px;margin-bottom:2px}
+
+  /* Content sections */
+  .container{max-width:1200px;margin:0 auto;padding:28px 20px}
+
+  /* Categories */
+  .categories{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:36px}
+  .cat{
+    background:var(--paper);
+    padding:0 0 16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0;cursor:pointer;
+  }
+  .cat img{width:100%;height:150px;object-fit:cover;filter:grayscale(.15);transition:filter .3s}
+  .cat h4{margin:14px 16px 2px;font-weight:450;font-family:'Fraunces';font-size:17px;color:var(--ink)}
+  .cat p{margin:0 16px;color:var(--muted);font-size:12.5px}
+
+  .cat:hover img{filter:grayscale(0)}
+
+  /* Product Tools */
+  .product-tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .filters{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .select, .range{padding:8px 0;border-radius:0;border:0;border-bottom:1px solid var(--line-strong);background:transparent;font-size:13px;color:var(--ink)}
+  .select:focus, .search:focus{outline:1px solid var(--ink)}
+  .search{flex:1;max-width:280px;padding:8px 0;border-radius:0;border:0;border-bottom:1px solid var(--line-strong);background:transparent;font-size:13px}
+
+  /* Product grid */
+  .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:28px}
+  .card{
+    background:var(--card);padding:0;overflow:hidden;
+  }
+  .card .media{overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center;background:#eee6d6}
+  .card .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .card:hover .media img{transform:scale(1.04)}
+  .card .meta{padding:16px}
+  .title{font-family:'Fraunces';font-weight:450;font-size:16px;color:var(--ink);margin-bottom:6px}
+  .price{font-weight:500;color:var(--brass-deep);font-size:15px;margin-bottom:6px;font-family:'Inter'}
+  .rating{color:var(--muted);margin-bottom:14px;font-size:12.5px}
+  .card .actions{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .add-btn{background:transparent;color:var(--ink);padding:8px 0;border-radius:0;border:0;border-bottom:1px solid var(--ink);cursor:pointer;font-weight:500;font-size:13px}
+  .add-btn:hover{color:var(--brass-deep);border-color:var(--brass-deep)}
+
+  /* Empty / no products */
+  .empty{padding:60px 20px;text-align:center;color:var(--muted);background:transparent;border:1px solid var(--line);font-family:'Fraunces';font-style:italic;font-size:16px}
+
+  /* Cart Modal */
+  .cart-modal{
+    position:fixed;right:20px;top:80px;width:400px;max-width:92vw;background:var(--paper);border:1px solid var(--line-strong);
+    z-index:1200;overflow:hidden;transform-origin:top right;transition:transform .18s,opacity .18s;
+  }
+  .cart-modal.hidden{transform:scale(.97);opacity:0;pointer-events:none}
+  .cart-header{display:flex;align-items:center;justify-content:space-between;padding:18px;border-bottom:1px solid var(--line)}
+  .cart-header strong{font-family:'Fraunces';font-weight:450;font-size:17px}
+  .cart-items{max-height:420px;overflow:auto;padding:6px 12px}
+  .cart-item{display:flex;gap:12px;padding:12px 6px;align-items:center;border-bottom:1px solid var(--line)}
+  .cart-item:last-child{border-bottom:0}
+  .cart-item img{width:64px;height:64px;object-fit:cover}
+  .qty{display:flex;align-items:center;gap:8px}
+  .qty button{width:26px;height:26px;border-radius:0;border:1px solid var(--line-strong);background:transparent;cursor:pointer}
+  .subtotal{padding:16px 18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-weight:500;font-family:'Fraunces';font-size:17px}
+  .checkout-btn{display:block;background:var(--ink);color:var(--paper);padding:13px;border-radius:var(--radius);margin:6px 18px 18px;cursor:pointer;text-align:center;font-weight:500;font-size:14px}
+  .checkout-btn:hover{background:var(--brass-deep)}
+
+  /* About */
+  .about{display:flex;gap:0;align-items:stretch;padding:0;border-radius:0;background:transparent;border:1px solid var(--line)}
+  .about .about-img{flex:1;min-height:340px;border-radius:0;overflow:hidden}
+  .about .about-img img{width:100%;height:100%;object-fit:cover}
+  .about .about-text{flex:1;padding:48px}
+  .about h3{font-family:'Fraunces';font-weight:450;font-size:28px;margin:0 0 16px}
+  .about p{color:#4a4638}
+  .about .small{color:var(--muted)}
+
+  /* Footer */
+  footer{margin-top:56px;background:var(--ink);color:var(--paper);padding:48px 20px 28px}
+  footer h3, footer .muted, footer a{color:var(--paper)}
+  footer .muted{opacity:.6}
+  .footer-grid{display:flex;flex-wrap:wrap;gap:24px;max-width:1200px;margin:0 auto;align-items:flex-start;justify-content:space-between}
+  .newsletter input{padding:10px 0;border-radius:0;border:0;border-bottom:1px solid rgba(242,236,224,0.35);margin-right:8px;background:transparent;color:var(--paper)}
+  .newsletter input::placeholder{color:rgba(242,236,224,0.5)}
+  .newsletter .btn{background:var(--brass);color:var(--ink)}
+  .newsletter .btn:hover{background:var(--paper)}
+  .socials{display:flex;gap:10px;align-items:center}
+  .socials a{display:inline-flex;padding:8px;border-radius:50%;border:1px solid rgba(242,236,224,0.3);text-decoration:none}
+
+  /* Responsive */
+  @media (max-width:1024px){
+    .products-grid{grid-template-columns:repeat(3,1fr)}
+    .categories{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:760px){
+    nav ul{display:none}
+    .hero-inner{grid-template-columns:1fr;padding-top:36px}
+    .hero-media{grid-column:1;order:-1}
+    .hero-media .tag{left:12px}
+    .hero-text{padding-bottom:36px}
+    .products-grid{grid-template-columns:repeat(2,1fr)}
+    .categories{grid-template-columns:repeat(2,1fr)}
+    .about{flex-direction:column}
+    .about .about-text{padding:28px}
+    .nav{padding:14px 16px}
+  }
+  @media (max-width:420px){
+    .products-grid{grid-template-columns:repeat(1,1fr)}
+    .logo span{font-size:16px}
+  }
+
+  /* tiny utilities */
+  .muted{color:var(--muted);font-size:14px}
+  .small{font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="symbol">M</div>
+      <span>Marquee</span>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#shop" class="nav-link">Shop</a></li>
+        <li><a href="#categories" class="nav-link">Categories</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <input class="search" placeholder="Search products..." id="searchInput" />
+      <button class="icon-btn" title="Cart" id="cartToggle" aria-label="Open cart">
+        🧾
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner container">
+      <div class="hero-text">
+        <p class="kicker">Autumn/Winter</p>
+        <h1>Clothes built to be worn, not just bought</h1>
+        <p>Natural fabrics, considered cuts, and a small seasonal run. Marquee makes the pieces that anchor a wardrobe rather than fill it.</p>
+        <div class="hero-cta">
+          <a class="btn" id="shopNow">View the collection</a>
+          <a href="#about" class="hero-secondary">Read our story</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1675877879221-871aa9f7c314?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400" alt="Man wearing a tailored jacket">
+        <div class="tag"><strong>Double Breasted Coat</strong>Wool-blend, hand-finished lapels</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="container" id="categories">
+    <h2 style="margin:12px 0;font-size:26px">Categories</h2>
+    <div class="categories" id="categoriesGrid">
+      <!-- individual categories -->
+      <div class="cat" data-cat="Shirts">
+        <img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=765" alt="Shirts">
+        <h4>Shirts</h4>
+        <p>Smart & casual shirts</p>
+      </div>
+      <div class="cat" data-cat="T-Shirts">
+        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=3d6be4e2efb4a4e429d3d6f7f8ae7f48" alt="T-Shirts">
+        <h4>T-Shirts</h4>
+        <p>Essential everyday tees</p>
+      </div>
+      <div class="cat" data-cat="Jackets">
+        <img src="https://images.unsplash.com/photo-1675877879221-871aa9f7c314?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400" alt="Jackets">
+        <h4>Jackets</h4>
+        <p>Leather & tailored coats</p>
+      </div>
+      <div class="cat" data-cat="Suits">
+        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=23a8a6c65ed5f9b8c2f3e1f6c8d9a0b1" alt="Suits">
+        <h4>Suits</h4>
+        <p>Formal and tailored</p>
+      </div>
+      <div class="cat" data-cat="Shoes">
+        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=jpg&q=60&w=3000" alt="Shoes">
+        <h4>Shoes</h4>
+        <p>Dress & casual shoes</p>
+      </div>
+      <div class="cat" data-cat="Accessories">
+        <img src="https://images.unsplash.com/photo-1588367941115-17cece88d036?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=764" alt="Accessories">
+        <h4>Accessories</h4>
+        <p>Bags, belts & watches</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="container" id="shop">
+    <div class="product-tools">
+      <div class="filters">
+        <select class="select" id="categoryFilter">
+          <option value="all">All Categories</option>
+        </select>
+        <select class="select" id="sortSelect">
+          <option value="newest">Sort: Newest</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="rating-desc">Rating</option>
+        </select>
+        <input type="range" class="range" id="priceRange" min="0" max="500" step="5" value="500" title="Max price">
+        <span class="small muted">Max ₹<span id="priceRangeValue">500</span></span>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="muted small">Showing <span id="countShown">0</span> products</div>
+      </div>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- JS populated -->
+    </div>
+
+    <div id="noResults" class="empty" style="display:none">No products match your filters. Try adjusting them.</div>
+  </section>
+
+  <!-- About -->
+  <section class="container" id="about">
+    <div class="about">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=3d6be4e2efb4a4e429d3d6f7f8ae7f48" alt="Brand story image">
+      </div>
+      <div class="about-text">
+        <h3>About Marquee</h3>
+        <p>We started Marquee with a simple complaint: most menswear is either disposable or absurdly priced. So we work directly with a handful of mills and small workshops, keep the range small, and put the budget into fabric and construction instead of packaging.</p>
+        <p class="small muted">Every piece is designed to move between the office and the evening without changing out of it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <div style="min-width:200px">
+        <h3 style="margin:0;font-size:22px">Marquee</h3>
+        <p class="muted small">Tailored pieces and crafted basics, made in small runs.</p>
+      </div>
+
+      <div class="newsletter">
+        <label class="small muted">Subscribe to updates</label>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <input type="email" id="newsletterEmail" placeholder="Email address" />
+          <button class="btn" id="subscribeBtn">Subscribe</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="socials">
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Facebook">🔵</a>
+          <a href="#" title="Twitter">🐦</a>
+        </div>
+        <div style="margin-top:12px" class="small muted">
+          <a href="#" class="muted small">About</a> · <a href="#" class="muted small">Privacy Policy</a> · <a href="#" class="muted small">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- CART MODAL -->
+<div id="cartModal" class="cart-modal hidden" role="dialog" aria-label="Shopping cart">
+  <div class="cart-header">
+    <div style="display:flex;gap:10px;align-items:center"><strong>Cart</strong><span class="muted small" id="cartItemsCount">(0 items)</span></div>
+    <button class="icon-btn" id="closeCart">✖️</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <!-- JS -->
+  </div>
+  <div class="subtotal">
+    <div>Total</div>
+    <div>₹<span id="cartTotal">0</span></div>
+  </div>
+  <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+</div>
+ 
+<script src="app.js"></script>
+
+<script>
+/* ==========================
+   Sample product data
+   ========================== */
+const products = [
+  { id: 'p1', title: 'Wool Tailored Coat', category:'Jackets', price:259, rating:4.8,
+    img:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=3f1a0d686f6a5d9d81fa5b9f13ef2e59',
+    created: '2025-09-12'
+  },
+  { id: 'p2', title: 'Structured Blazer', category:'Suits', price:399, rating:4.7,
+    img:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=23a8a6c65ed5f9b8c2f3e1f6c8d9a0b1',
+    created: '2025-10-01'
+  },
+  { id: 'p3', title: 'Cotton Oxford Shirt', category:'Shirts', price:79, rating:4.4,
+    img:'https://images.unsplash.com/photo-1618001789159-ffffe6f96ef2',
+    created: '2025-08-18'
+  },
+  { id: 'p4', title: 'Essential Crew T-Shirt', category:'T-Shirts', price:29, rating:4.1,
+    img:'https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=3d6be4e2efb4a4e429d3d6f7f8ae7f48',
+    created: '2025-11-01'
+  },
+  { id: 'p5', title: 'Leather Derby Shoe', category:'Shoes', price:149, rating:4.6,
+    img:'https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16',
+    created: '2025-07-21'
+  },
+  { id: 'p6', title: 'Slim Fit Chinos', category:'Trousers', price:69, rating:4.2,
+    img:'https://images.unsplash.com/photo-1574180566232-aaad1b5b8450',
+    created: '2025-06-10'
+  },
+  { id: 'p7', title: 'Silk Pocket Square', category:'Accessories', price:19, rating:4.5,
+    img:'https://images.unsplash.com/photo-1620012253295-c15cc3e65df4',
+    created: '2025-10-12'
+  },
+  { id: 'p8', title: 'Double Breasted Coat', category:'Jackets', price:329, rating:4.9,
+    img:'https://images.unsplash.com/photo-154
